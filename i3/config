@@ -9,6 +9,13 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# GLOBALS
+set $wallpaper_path ~/wallpapers/pink-psychadelic.jpeg
+
+set $gap 40
+set $gap_right 100
+
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -190,13 +197,32 @@ bindsym $mod+r mode "resize"
 # }
 
 # Enter fullscreen by default
-for_window [all] fullscreen enable
+# for_window [all] fullscreen enable
 
 # bind win + tab to open last focused workspace
-bindsym $mod+Tab workspace back_and_forth
+# bindsym $mod+Tab workspace back_and_forth
 
-# bind win + n to open a new workspace
-bindsym $mod+n workspace next
+# **bind win + n to open a new workspace (this doesnt work/exist without custom scripts**
+# bindsym $mod+n workspace next
+
+# Gaps
+
+gaps top $gap
+gaps left $gap
+gaps bottom $gap
+gaps right $gap_right
 
 # always use uk keyboard
-exec_always setxkbmap gb
+exec_always --no-startup-id setxkbmap gb
+
+# Remove borders around windows
+default_border none
+
+# set cursor on startup
+# exec --no-startup-id xsetroot -cursor_name left_ptr
+
+# run picom on startup (handle screentearing and opacity stuff)
+exec --no-startup-id picom
+
+#set background on startup
+exec_always --no-startup-id feh --bg-fill $wallpaper_path
