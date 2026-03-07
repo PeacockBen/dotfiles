@@ -2,9 +2,20 @@
   "cat /sys/class/power_supply/BAT1/capacity")
 
 (defwidget battery-widget []
-  (box :class "battery"
+  (box :class "battery-container"
        :orientation "vertical"
-    (label :text "${battery}%")))
+       :valign "center"
+       :halign "center"
+       :space-evenly false
+    (box :class "battery-nub"
+       :halign "center")
+    (box :class "battery-body"
+         :orientation "vertical"
+         :valign "fill"
+      (box :class "battery-fill"
+           :orientation "vertical"
+	   :valign "end"
+           :style "min-height: ${battery}px;"))))
 
 (defwindow sidebar
   :monitor 0
