@@ -1,0 +1,21 @@
+(defpoll battery :interval "30s"
+  "cat /sys/class/power_supply/BAT1/capacity")
+
+(defwidget battery-widget []
+  (box :class "battery"
+       :orientation "vertical"
+    (label :text "${battery}%")))
+
+(defwindow sidebar
+  :monitor 0
+  :geometry (geometry
+    :x "0"
+    :y "0"
+    :width "68px"
+    :height "85%"
+    :anchor "right center")
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore true
+  (box :class "sidebar"
+    (battery-widget)))
