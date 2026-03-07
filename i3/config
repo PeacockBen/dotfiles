@@ -13,7 +13,7 @@
 set $wallpaper_path ~/wallpapers/pink-psychadelic.jpeg
 
 set $gap 40
-set $gap_right 100
+set $gap_right 120
 
 
 set $mod Mod4
