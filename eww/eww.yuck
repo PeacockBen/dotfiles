@@ -1,6 +1,9 @@
 (defpoll battery :interval "30s"
   "cat /sys/class/power_supply/BAT1/capacity")
 
+(defpoll volume :interval "1s"
+  "wpctl get-volume @DEFAULT_AUDIO_SINK | awk '{print $2 *100}'")
+
 (defwidget battery-widget []
   (box :class "battery-container"
        :orientation "vertical"
@@ -17,6 +20,20 @@
 	   :valign "end"
            :style "min-height: ${battery}px;"))))
 
+(defwidget volume-widget[]
+  (box :class "volume-container"
+       :orientation "vertical"
+       :space-evenly false
+       :valign "center"
+       :halign "center"
+    (scale :class "volume-slider"
+           :orientation "vertical"
+           :flipped true
+           :min 0
+           :max 151
+           :value volume
+           :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%")))
+
 (defwindow sidebar
   :monitor 0
   :geometry (geometry
@@ -29,4 +46,11 @@
   :windowtype "dock"
   :wm-ignore true
   (box :class "sidebar"
-    (battery-widget)))
+    (box :class "sidebar-layout"
+         :orientation "horizontal"
+         :space-evenly false
+         :valign "center"
+         :halign "center"
+         :spacing 20
+      (battery-widget)
+      (volume-widget))))
