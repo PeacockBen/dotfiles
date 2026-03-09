@@ -226,3 +226,6 @@ exec --no-startup-id picom
 
 #set background on startup
 exec_always --no-startup-id feh --bg-fill $wallpaper_path
+
+# run sidebar fullscreen listener script
+exec --no-startup-id ~/.config/eww/scripts/fullscreen-sidebar-listener.sh

@@ -1,8 +1,12 @@
-$bg-colour: rgba(226, 170, 193, 0.5);
+$bg-colour: rgba(226, 170, 193, 0.7);
 $accent: rgba(172,243,241, 0.8);
 $accent-bright: rgba(172, 243, 241, 1.0);
 
 .sidebar {
+  background-color: transparent;
+}
+
+.sidebar-inner {
   background-color: $bg-colour;
   border-radius: 10px 0px 0px 10px;
   border: 3px solid $accent;
