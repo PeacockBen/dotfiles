@@ -222,7 +222,7 @@ default_border none
 # exec --no-startup-id xsetroot -cursor_name left_ptr
 
 # run picom on startup (handle screentearing and opacity stuff)
-exec --no-startup-id picom
+exec_always --no-startup-id picom
 
 #set background on startup
 exec_always --no-startup-id feh --bg-fill $wallpaper_path

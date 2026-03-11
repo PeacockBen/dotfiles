@@ -1,8 +1,7 @@
 (defpoll battery :interval "30s"
   "cat /sys/class/power_supply/BAT1/capacity")
 
-(defpoll volume :interval "1s"
-  "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 *100}'")
+(deflisten volume :initial "0" "./scripts/volume-listener.sh")
 
 (defvar show_sidebar true)
 
